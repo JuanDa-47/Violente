@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fuerza Bruta - Transforma Tu Cuerpo</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -32,12 +33,14 @@
       font-size: 3rem;
       color: #fff;
       margin-bottom: 10px;
+      animation: fadeInDown 1s ease-out;
     }
     header p {
       font-size: 1.2rem;
       color: #ccc;
       max-width: 600px;
       margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out;
     }
     .btn {
       background: #ff3c00;
@@ -75,6 +78,19 @@
       font-style: italic;
       margin-bottom: 10px;
     }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #1c1c1c;
+      color: #fff;
+    }
     footer {
       background: #1c1c1c;
       text-align: center;
@@ -85,6 +101,14 @@
       text-decoration: none;
       margin: 0 10px;
     }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -94,7 +118,7 @@
     <a class="btn" href="https://wa.me/573001112233" target="_blank">Habla conmigo por WhatsApp</a>
   </header>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>¿Qué incluye?</h2>
     <ul>
       <li>Rutinas semanales en video y PDF</li>
@@ -104,16 +128,22 @@
     </ul>
   </section>
 
-  <section class="testimonios">
+  <section class="testimonios" data-aos="fade-up">
     <h2>Testimonios</h2>
     <p>“Este curso me devolvió la energía. Ahora entreno motivado y con resultados visibles.” – Usuario feliz</p>
     <p>“Nunca pensé que desde casa lograría marcarme, pero Papasito lo hizo posible.” – Cliente anónimo</p>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Únete a nuestra comunidad</h2>
-    <p>Muy pronto activaremos nuestro blog y grupo para que compartas tu progreso, aprendas más sobre entrenamiento y mantengas la motivación al 100%.</p>
-    <a class="btn" href="#">Próximamente</a>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="TU_CORREO_PAYPAL">
+      <input type="hidden" name="item_name" value="Curso Fuerza Bruta">
+      <input type="hidden" name="amount" value="20.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="btn" value="Comprar ahora por $20 USD">
+    </form>
   </section>
 
   <footer>
@@ -123,5 +153,9 @@
     </p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
