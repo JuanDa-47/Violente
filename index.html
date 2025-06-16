@@ -1,161 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fuerza Bruta - Transforma Tu Cuerpo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Violente - Tu cambio empieza aquí</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #0e0e0e;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: #0d0d0d;
       color: #fff;
-      line-height: 1.6;
     }
     header {
-      background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?fit=crop&w=1350&q=80') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1') center/cover no-repeat;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      flex-direction: column;
     }
     header h1 {
       font-size: 3rem;
-      color: #fff;
-      margin-bottom: 10px;
-      animation: fadeInDown 1s ease-out;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-      margin-bottom: 20px;
-      animation: fadeInUp 1s ease-out;
-    }
-    .btn {
-      background: #ff3c00;
-      color: #fff;
-      padding: 12px 24px;
-      text-decoration: none;
+    .button {
+      background: #00ff88;
+      color: #111;
+      padding: 15px 25px;
+      border: none;
       font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #e13400;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+      text-decoration: none;
     }
     section {
-      padding: 60px 20px;
-      max-width: 900px;
+      padding: 40px 20px;
+      max-width: 800px;
       margin: auto;
     }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ff3c00;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li {
-      background: #1c1c1c;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-left: 5px solid #ff3c00;
-    }
-    .testimonios p {
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    input, textarea {
+    form input, form textarea {
+      width: 100%;
       padding: 10px;
-      border-radius: 5px;
+      margin-bottom: 15px;
+      border-radius: 8px;
       border: none;
-      background: #1c1c1c;
-      color: #fff;
     }
     footer {
-      background: #1c1c1c;
       text-align: center;
       padding: 20px;
+      background: #000;
+      font-size: 14px;
     }
-    footer a {
-      color: #ff3c00;
+    a.ig {
+      color: #00ff88;
       text-decoration: none;
-      margin: 0 10px;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Violente</h1>
-    <p>Transforma tu mente y cuerpo.</p>
-    <a class="btn" href="https://wa.me/573019858055" target="_blank">Habla conmigo por WhatsApp</a>
+
+  <header data-aos="zoom-in">
+    <h1>Transforma tu cuerpo con <strong>Violente</strong></h1>
+    <a href="#contacto" class="button">Únete ahora</a>
   </header>
 
   <section data-aos="fade-up">
-    <h2>¿Qué incluye?</h2>
+    <h2>¿Qué incluye el plan?</h2>
     <ul>
-      <li>Rutinas semanales en video y PDF</li>
-      <li>Plan de alimentación simple y efectivo</li>
-      <li>Grupo privado de motivación</li>
-      <li>Acceso inmediato y de por vida</li>
+      <li>Rutinas en video y PDF</li>
+      <li>Plan de alimentación realista</li>
+      <li>Acceso a grupo de motivación</li>
+      <li>Soporte directo conmigo</li>
     </ul>
   </section>
 
-  <section class="testimonios" data-aos="fade-up">
-    <h2>Testimonios</h2>
-    <p>“Este curso me devolvió la energía. Ahora entreno motivado y con resultados visibles.” – Usuario feliz</p>
-    <p>“Nunca pensé que desde casa lograría marcarme, pero Papasito lo hizo posible.” – Cliente anónimo</p>
+  <section data-aos="fade-up" id="pago">
+    <h2>Compra ahora</h2>
+    <div id="paypal-button-container"></div>
   </section>
 
-  <section data-aos="fade-up">
-    <h2>Únete a nuestra comunidad</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="TU_CORREO_PAYPAL">
-      <input type="hidden" name="item_name" value="Curso Fuerza Bruta">
-      <input type="hidden" name="amount" value="20.00">
-      <input type="hidden" name="currency_code" value="USD">
-      <input type="submit" class="btn" value="Comprar ahora por $20 USD">
+  <section data-aos="fade-up" id="contacto">
+    <h2>¿Tienes dudas? Escríbeme</h2>
+    <form onsubmit="enviarWhatsApp(event)">
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <input type="text" id="objetivo" placeholder="Tu objetivo fitness" required />
+      <textarea id="mensaje" placeholder="Cuéntame más..." required></textarea>
+      <button class="button" type="submit">Enviar por WhatsApp</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Violente | Sígueme: 
-      <a href="https://instagram.com/whotf_isjuanda" target="_blank">Instagram</a> |
-      <a href="https://t.me" target="_blank">Telegram</a>
-    </p>
+    Hecho con 🔥 por <a class="ig" href="https://www.instagram.com/whotf_isjuanda/" target="_blank">@whotf_isjuanda</a><br>
+    Violente © 2025
   </footer>
 
+  <!-- Animaciones AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
+
+  <!-- WhatsApp -->
+  <script>
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const objetivo = document.getElementById("objetivo").value;
+      const mensaje = document.getElementById("mensaje").value;
+      const url = `https://wa.me/573019858055?text=Hola%2C%20soy%20${encodeURIComponent(nombre)}%20y%20mi%20objetivo%20es%20${encodeURIComponent(objetivo)}.%0A${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+  <!-- PayPal -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXJP-e7NRieZdIH49YGrQQtLVW_xFpLbk1vWHs2a-quKS0kvH6E0ieGMeehCWQSz6vHmE3cMroTDntDP&currency=USD"></script>
+  <script>
+    paypal.Buttons({
+      style: {
+        color: 'gold',
+        shape: 'pill',
+        label: 'checkout',
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '20.00' // Ajusta si cambias el precio
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Gracias por tu compra, ' + details.payer.name.given_name + ' 💪🔥');
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+
 </body>
 </html>
