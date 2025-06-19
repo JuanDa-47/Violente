@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Violente - Tu cambio empieza aquí</title>
+  <title>Violente</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
@@ -67,7 +67,7 @@
       box-shadow: 0 0 20px #ff0000;
     }
     section {
-      padding: 60px 20px;
+      padding: 100px 20px 60px;
       max-width: 900px;
       margin: auto;
     }
@@ -90,29 +90,21 @@
       font-weight: bold;
     }
     .slider-container {
-      overflow: hidden;
-      position: relative;
-    }
-    .slider {
-      display: flex;
-      width: 600%;
-      animation: slide 36s infinite;
+      background: #000;
+      border-radius: 10px;
+      margin-top: 30px;
+      padding: 40px 20px;
+      text-align: center;
     }
     .slide {
-      width: 100%;
-      flex: 0 0 100%;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
+      color: #00ff88;
+      font-size: 1.4rem;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
-    @keyframes slide {
-      0% { transform: translateX(0%); }
-      16% { transform: translateX(-100%); }
-      32% { transform: translateX(-200%); }
-      48% { transform: translateX(-300%); }
-      64% { transform: translateX(-400%); }
-      80% { transform: translateX(-500%); }
-      100% { transform: translateX(0%); }
+    .slide.active {
+      opacity: 1;
     }
   </style>
 </head>
@@ -127,13 +119,32 @@
   </nav>
 
   <header id="home" data-aos="zoom-in">
-    <h1 id="typing">Violente - Tu cambio empieza aquí</h1>
+    <h1 id="typing"></h1>
     <a href="#contacto" class="button">Únete ahora</a>
   </header>
 
   <section id="sobre-mi" data-aos="fade-up">
     <h2>Sobre mí</h2>
-    <p>Soy Juanda, fundador de <strong>Violente</strong>. No nací fuerte. Me hice fuerte cuando dejé de poner excusas. Aquí no vendemos cuerpos perfectos, aquí construimos mentalidades duras.</p>
+    <p>Hey, soy <strong>Juanda.</strong> Nací común y corriente, pero decidí romper con eso. 
+    Entrenamiento, disciplina y visión. Eso es <strong>Violente</strong>.</p>
+
+    <p>Cambié la flojera por constancia, el “mañana empiezo” por el “hoy entreno”. 
+    Y ahora quiero ayudarte a hacer lo mismo. RECUERDA: <strong>There is no Tomorrow</strong>.</p>
+
+    <p>Este no es otro plan fitness. Es una transformación mental, física y emocional. 
+    No vendo cuerpos perfectos. Te enseño a volverte un cabrón imparable.</p>
+  </section>
+
+  <section id="comunidad" data-aos="fade-up">
+    <h2>Nuestra Comunidad</h2>
+    <p>Únete a nuestro grupo gratuito donde compartimos tips, motivación y retos semanales. ¡Es el primer paso para vivir Violentemente!</p>
+    <a href="#" class="button">Unirme gratis</a>
+  </section>
+
+  <section id="curso" data-aos="fade-up">
+    <h2>Curso + Seguimiento Personalizado</h2>
+    <p>Accede al curso completo de transformación con acceso a contenido exclusivo, rutinas avanzadas y mi acompañamiento directo.</p>
+    <a href="#pago" class="button">Acceder al curso</a>
   </section>
 
   <section data-aos="fade-up">
@@ -146,29 +157,10 @@
     </ul>
   </section>
 
-  <section id="comunidad" data-aos="fade-up">
-    <h2>Nuestra Comunidad</h2>
-    <p>Únete a nuestro grupo gratuito donde compartimos tips, motivación y retos semanales. ¡Es el primer paso para vivir el estilo Violente!</p>
-    <a href="#" class="button">Unirme gratis</a>
-  </section>
-
-  <section id="curso" data-aos="fade-up">
-    <h2>Curso + Seguimiento Personalizado</h2>
-    <p>Accede al curso completo de transformación con acceso a contenido exclusivo, rutinas avanzadas y mi acompañamiento directo.</p>
-    <a href="#pago" class="button">Acceder al curso</a>
-  </section>
-
   <section data-aos="fade-up">
     <h2>Testimonios</h2>
     <div class="slider-container">
-      <div class="slider">
-        <div class="slide">"Violente me cambió la vida. Empecé con 0 motivación y ahora me levanto como un animal." - Andrés G.</div>
-        <div class="slide">"No es un entrenador más, es un estilo de vida. Gracias Juanda." - Laura P.</div>
-        <div class="slide">"Entrenar con Violente es como tener una bomba de energía diaria. Brutal." - Kevin M.</div>
-        <div class="slide">"Después de 3 semanas con Violente, ya no me reconozco. Y eso es bueno." - Diego T.</div>
-        <div class="slide">"Pasé de excusas a resultados. Esto no es un programa, es una transformación." - Camila S.</div>
-        <div class="slide">"Juanda no solo te entrena el cuerpo, te despierta la cabeza." - Felipe Z.</div>
-      </div>
+      <div class="slide" id="testimonio"></div>
     </div>
   </section>
 
@@ -192,9 +184,9 @@
     Violente © 2025
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+
   <script>
     function enviarWhatsApp(event) {
       event.preventDefault();
@@ -205,8 +197,8 @@
       window.open(url, "_blank");
     }
   </script>
+
   <script>
-    // typing animation rápida
     const texto = "Violente - Tu cambio empieza aquí";
     let i = 0;
     function escribirTexto() {
@@ -214,12 +206,36 @@
       if (i < texto.length) {
         el.textContent += texto.charAt(i);
         i++;
-        setTimeout(escribirTexto, 50);
+        setTimeout(escribirTexto, 40);
       }
     }
     document.getElementById("typing").textContent = "";
     escribirTexto();
   </script>
+
+  <script>
+    const testimonios = [
+      "Violente me cambió la vida. Empecé con 0 motivación y ahora me levanto como un animal. — Andrés G.",
+      "No es un entrenador más, es un estilo de vida. Gracias Juanda. — Laura P.",
+      "Entrenar con Violente es como tener una bomba de energía diaria. Brutal. — Kevin M.",
+      "Después de 3 semanas con Violente, ya no me reconozco. Y eso es bueno. — Diego T.",
+      "Pasé de excusas a resultados. Esto no es un programa, es una transformación. — Camila S.",
+      "Juanda no solo te entrena el cuerpo, te despierta la cabeza. — Felipe Z."
+    ];
+    let index = 0;
+    const testimonioEl = document.getElementById("testimonio");
+    function mostrarTestimonio() {
+      testimonioEl.classList.remove("active");
+      setTimeout(() => {
+        testimonioEl.textContent = `“${testimonios[index]}”`;
+        testimonioEl.classList.add("active");
+        index = (index + 1) % testimonios.length;
+      }, 1000);
+    }
+    mostrarTestimonio();
+    setInterval(mostrarTestimonio, 6000);
+  </script>
+
   <script src="https://www.paypal.com/sdk/js?client-id=AXJP-e7NRieZdIH49YGrQQtLVW_xFpLbk1vWHs2a-quKS0kvH6E0ieGMeehCWQSz6vHmE3cMroTDntDP&currency=USD"></script>
   <script>
     paypal.Buttons({
@@ -236,5 +252,6 @@
       }
     }).render('#paypal-button-container');
   </script>
+
 </body>
 </html>
