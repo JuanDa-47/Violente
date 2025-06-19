@@ -69,19 +69,19 @@
       font-weight: bold;
     }
     .slider {
-      display: flex;
-      overflow: hidden;
-      position: relative;
-      height: 150px;
-      margin-top: 30px;
-    }
-    .slide {
-      min-width: 100%;
-      text-align: center;
-      font-size: 1.2rem;
-      transition: transform 1s ease-in-out;
-    }
-  </style>
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .slider .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
 </head>
 <body>
 
@@ -106,12 +106,16 @@
   </ul>
 </section>
 
+<!-- Testimonios -->
 <section data-aos="fade-up">
   <h2>Testimonios</h2>
   <div class="slider" id="slider">
     <div class="slide">"Violente me cambió la vida. Empecé con 0 motivación y ahora me levanto como un animal." - Andrés G.</div>
     <div class="slide">"No es un entrenador más, es un estilo de vida. Gracias Juanda." - Laura P.</div>
     <div class="slide">"Entrenar con Violente es como tener una bomba de energía diaria. Brutal." - Kevin M.</div>
+    <div class="slide">"Después de 3 semanas con Violente, ya no me reconozco. Y eso es bueno." - Diego T.</div>
+    <div class="slide">"Pasé de excusas a resultados. Esto no es un programa, es una transformación." - Camila S.</div>
+    <div class="slide">"Juanda no solo te entrena el cuerpo, te despierta la cabeza." - Felipe Z.</div>
   </div>
 </section>
 
@@ -230,15 +234,15 @@
     }).render('#paypal-button-container');
   </script>
 
-  <!-- Slider automático -->
-  <script>
-    const slider = document.getElementById('slider');
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % slider.children.length;
-      slider.style.transform = `translateX(-${idx * 100}%)`;
-    }, 4000);
-  </script>
+<!-- Slider automático fijo sin parpadeo -->
+<script>
+  const slider = document.getElementById('slider');
+  let idx = 0;
+  setInterval(() => {
+    idx = (idx + 1) % slider.children.length;
+    slider.style.transform = `translateX(-${idx * 100}%)`;
+  }, 5000);
+</script>
 
 </body>
 </html>
