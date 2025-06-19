@@ -13,7 +13,7 @@
       color: #fff;
     }
     header {
-      background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1') center/cover no-repeat;
+      background: url('3231540E-10A8-4AE3-B958-6B1E65F75041.jpg') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -22,10 +22,11 @@
       flex-direction: column;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       border-radius: 10px;
+      min-height: 70px;
     }
     .button {
       background: #00ff88;
@@ -37,6 +38,12 @@
       cursor: pointer;
       border-radius: 10px;
       text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+    .button:hover {
+      background: #ff0000;
+      color: #fff;
+      box-shadow: 0 0 20px #ff0000;
     }
     section {
       padding: 40px 20px;
@@ -61,12 +68,25 @@
       text-decoration: none;
       font-weight: bold;
     }
+    .slider {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      height: 150px;
+      margin-top: 30px;
+    }
+    .slide {
+      min-width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      transition: transform 1s ease-in-out;
+    }
   </style>
 </head>
 <body>
 
   <header data-aos="zoom-in">
-    <h1>Transforma tu cuerpo con <strong>Violente</strong></h1>
+    <h1 id="typing"></h1>
     <a href="#contacto" class="button">Únete ahora</a>
   </header>
 
@@ -84,6 +104,15 @@
     <li style="margin-bottom: 10px;">💬 Acceso a grupo de motivación</li>
     <li>💪 Soporte directo conmigo</li>
   </ul>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Testimonios</h2>
+  <div class="slider" id="slider">
+    <div class="slide">"Violente me cambió la vida. Empecé con 0 motivación y ahora me levanto como un animal." - Andrés G.</div>
+    <div class="slide">"No es un entrenador más, es un estilo de vida. Gracias Juanda." - Laura P.</div>
+    <div class="slide">"Entrenar con Violente es como tener una bomba de energía diaria. Brutal." - Kevin M.</div>
+  </div>
 </section>
 
   <section data-aos="fade-up" id="contacto">
@@ -124,6 +153,57 @@
     }
   </script>
 
+  <!-- Texto animado tipo máquina de escribir -->
+  <script>
+    const frases = [
+      "No te falta tiempo. Te faltan ganas.",
+      "Transforma tu cuerpo. Entrena tu mente.",
+      "Violente es decisión, no excusa."
+    ];
+    let i = 0;
+    let j = 0;
+    let currentPhrase = [];
+    let isDeleting = false;
+    let isEnd = false;
+
+    function loop() {
+      const header = document.getElementById('typing');
+      header.innerHTML = currentPhrase.join('');
+
+      if (i < frases.length) {
+        if (!isDeleting && j <= frases[i].length) {
+          currentPhrase.push(frases[i][j]);
+          j++;
+        }
+
+        if (isDeleting && j <= frases[i].length) {
+          currentPhrase.pop(frases[i][j]);
+          j--;
+        }
+
+        if (j === frases[i].length) {
+          isEnd = true;
+          isDeleting = true;
+        }
+
+        if (isDeleting && j === 0) {
+          currentPhrase = [];
+          isDeleting = false;
+          i++;
+          if (i === frases.length) {
+            i = 0;
+          }
+        }
+      }
+      const speedUp = Math.random() * (80 -50) + 50;
+      const normalSpeed = Math.random() * (300 -200) + 200;
+      const time = isEnd ? 2000 : isDeleting ? speedUp : normalSpeed;
+      isEnd = false;
+      setTimeout(loop, time);
+    }
+    loop();
+  </script>
+
   <!-- PayPal -->
   <script src="https://www.paypal.com/sdk/js?client-id=AXJP-e7NRieZdIH49YGrQQtLVW_xFpLbk1vWHs2a-quKS0kvH6E0ieGMeehCWQSz6vHmE3cMroTDntDP&currency=USD"></script>
   <script>
@@ -148,6 +228,16 @@
         });
       }
     }).render('#paypal-button-container');
+  </script>
+
+  <!-- Slider automático -->
+  <script>
+    const slider = document.getElementById('slider');
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % slider.children.length;
+      slider.style.transform = `translateX(-${idx * 100}%)`;
+    }, 4000);
   </script>
 
 </body>
